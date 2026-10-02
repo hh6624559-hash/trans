@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TRS6 · Đấu trường từ vựng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="userbar" id="userbar">
+  <div class="who">👤 <span id="userName"></span></div>
+  <div class="right"><button id="statsBtn">🏆 Xếp hạng &amp; tiến độ</button><button id="logoutBtn">Đăng xuất</button></div>
+</div>
+<div class="overlay" id="authOverlay">
+  <div class="panel">
+    <h2 id="authTitle">🎮 Đăng nhập</h2>
+    <p class="sub">Đấu trường từ vựng TRS6 — lưu tiến độ học và kết quả thi của bạn.</p>
+    <input id="authUser" placeholder="Tên đăng nhập" autocomplete="username" maxlength="24">
+    <input id="authName" placeholder="Tên hiển thị (khi đấu bạn bè)" maxlength="30" style="display:none">
+    <input id="authPass" type="password" placeholder="Mật khẩu (≥ 6 ký tự)" autocomplete="current-password">
+    <div class="err" id="authErr"></div>
+    <button class="primary" id="authSubmit">Đăng nhập</button>
+    <button class="switch" id="authSwitch">Chưa có tài khoản? Đăng ký</button>
+  </div>
+</div>
+<div class="overlay" id="statsOverlay">
+  <div class="panel statpanel"><div id="statsBody">Đang tải...</div>
+    <button class="primary" id="statsClose" style="margin-top:16px">Đóng</button></div>
+</div>
+<div class="wrap">
+
+  <div class="examhead">
+    <div class="top-row">
+      <div>
+        <h1>🎮 Đấu trường từ vựng TRS6</h1>
+        <div class="code">10 chương + 1 chương Tổng hợp · 300/300 từ · Trình độ B2</div>
+      </div>
+      <div class="stampbox">🔥 ÔN THI</div>
+    </div>
+    <div class="scorebar">
+      <div>Đã làm <b id="doneCount">0</b>/<span id="totalCount">–</span></div>
+      <div>✅ <b id="correctCount">0</b></div>
+      <div>❌ <b id="wrongCount">0</b></div>
+    </div>
+  </div>
+
+  <div class="modetabs">
+    <div class="modetab active" id="tabStudy">📇 Học từ vựng</div>
+    <div class="modetab" id="tabQuiz">🎯 Thi solo<div class="locktip" id="lockTip">🔒 Đang thi — hoàn thành bài trước đã!</div></div>
+    <div class="modetab" id="tabMulti">🤼 Đấu bạn bè</div>
+  </div>
+
+  <div class="studywrap show" id="studyWrap">
+    <div id="chapterPicker"></div>
+    <div id="flashSection" style="display:none;">
+      <div class="studyintro">Lướt từng thẻ để nắm nghĩa + mẹo nhớ trước khi thi thử. Một khi đã bấm "Bắt đầu bài kiểm tra", bạn sẽ không thể quay lại xem thẻ này cho đến khi nộp bài — giống thi thật! 🚀</div>
+      <button class="navbtn" id="backToChapters" style="margin-bottom:14px;">← Danh sách chương</button>
+      <div class="flashcard" id="flashcard"></div>
+      <div class="flashnav">
+        <button class="navbtn" id="flashPrev">← Trước</button>
+        <span class="flashcount" id="flashCount">1 / 40</span>
+        <button class="navbtn" id="flashNext">Tiếp →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="quizWrap" style="display:none;">
+    <div id="startScreen"></div>
+    <div id="testScreen" style="display:none;">
+      <div class="navlegend">
+        <span><i class="dot" style="background:var(--bg);border:1.5px solid var(--line)"></i>Chưa làm</span>
+        <span><i class="dot" style="background:var(--green)"></i>Đúng</span>
+        <span><i class="dot" style="background:var(--red)"></i>Sai</span>
+      </div>
+      <div class="navgrid" id="navGrid"></div>
+      <div id="quizArea"></div>
+    </div>
+  </div>
+
+  <div id="multiWrap" style="display:none;">
+    <div id="mpHome"></div>
+    <div id="mpLobby" style="display:none;"></div>
+    <div id="mpBattle" style="display:none;">
+      <div class="lb-panel" id="lbPanel"></div>
+      <div id="mpQuizArea"></div>
+    </div>
+  </div>
+
+</div>
+<script src="/js/api.js"></script>
+<script src="/js/room-ws.js"></script>
+</body>
+</html>

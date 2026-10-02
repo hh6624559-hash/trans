@@ -1,0 +1,12 @@
+{
+  "name": "trs6-vocab-arena",
+  "version": "1.0.0",
+  "description": "Đấu trường từ vựng TRS6 – web app full-stack (Node.js + SQLite)",
+  "type": "commonjs",
+  "main": "server/server.js",
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "start": "node --no-warnings server/server.js",
+    "dev": "node --no-warnings --watch server/server.js"
+  }
+}
